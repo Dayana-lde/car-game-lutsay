@@ -158,4 +158,26 @@ const canvas = document.getElementById("canvas");
 			}
 		}
 	}
+// Основной рендеринг игры
+	function render() {
+		if (stop) return; // Если игра остановлена, не продолжаем рендерить
+
+		drawRect(); // Рисуем дорогу
+		drawLives(); // Рисуем количество жизней
+		drawScore(); // Рисуем счет и время
+		drawLines(); // Рисуем линии на дороге
+		drawMyCar(); // Рисуем машину игрока
+		drawEnemyCar1(); // Рисуем вражескую машину 1
+		drawEnemyCar2(); // Рисуем вражескую машину 2
+
+		if (!startTime) {
+			startTime = Date.now(); // Засекаем время начала игры
+		}
+		timeAlive = ((Date.now() - startTime) / 1000).toFixed(1); // Расчитываем время жизни 
+
+		myReq = requestAnimationFrame(render); // Запрашиваем следующий кадр
+	}
+
+	render(); // Начинаем рендеринг игры
+
 
