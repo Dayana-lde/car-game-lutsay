@@ -74,3 +74,31 @@ const canvas = document.getElementById("canvas");
 		line2.Y += 3; 
 		if (line2.Y > 500) line2.Y = -140; 
 	}
+// кнопка перезапуска игры
+	restartBtn.addEventListener("click", () => {
+		lives = 5; 
+		timeAlive = 0; 
+		startTime = null; 
+		stop = false; 
+
+		// Скрываем надпись "Game Over"
+		document.getElementById("gameOverText").style.display = "none";
+
+		render(); // Перезапускаем рендеринг игры
+	});
+
+	// остановка игры
+	function stopGame() {
+		cancelAnimationFrame(myReq); // Отменяем анимацию
+		document.getElementById("gameOverText").style.display = "block"; 
+		document.getElementById("gameOver").innerHTML = "score: " + score + "s"; 
+		document.getElementById("gameOver").style.display = "block"; 
+
+		restartBtn.style.display = "block"; // Показываем кнопку перезапуска игры
+
+		if (parseFloat(timeAlive) > parseFloat(score)) {
+			score = timeAlive; // Обновляем лучший результат
+			localStorage.setItem("score", score); // Сохраняем лучший результат в localStorage
+		}
+		stop = true; // Устанавливаем флаг для остановки игры
+	}
