@@ -192,3 +192,13 @@ const canvas = document.getElementById("canvas");
 		if (newDirect === 39) okRight = false; // Если отпущена клавиша вправо
 	});
 
+// Изменение скорости врагов
+	document.getElementById("speedBtn").addEventListener("click", function() {
+		enemySpeed = 3; // Устанавливаем скорость врагов на уровень 1
+	});
+	document.getElementById("speedBtnOne").addEventListener("click", function() {
+		enemySpeed = 6; // Устанавливаем скорость врагов на уровень 2
+	});
+	document.getElementById("speedBtnTwo").addEventListener("click", function() {
+		enemySpeed = 12; // Устанавливаем скорость врагов на уровень 3
+	});
