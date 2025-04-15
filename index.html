@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<title>Игра гонки</title>
+	<style>
+		body {
+			margin: 0; 
+			display: flex; 
+			justify-content: center; 
+			align-items: center; 
+			flex-direction: column; 
+			height: 100vh; 
+			background-image: url("mac.jpg"); 
+		}
+		#canvas {
+			border: 2px #1e1e1e solid; 
+		}
+		#gameOverText {
+			position: absolute;
+			top: 200px;
+			font-size: 36px;
+			color: red;
+			-webkit-text-stroke: 2px black; /* Тень для текста */
+			display: none; /* Изначально скрыт */
+			font-family: Arial, sans-serif;
+		}
+		#gameOver {
+			margin: 35px;
+			position: absolute;
+			top: 200px;
+			font-size: 36px;
+			color: red;
+			-webkit-text-stroke: 2px black; /* Тень для текста */
+			display: none; /* Изначально скрыт */
+			font-family: Arial, sans-serif;
+		}
+		.button {
+			display: flex; 
+			justify-content: space-around; 
+			margin: 10px;
+		}
+		button {
+			padding: 10px 30px; 
+			margin: 20px; 
+			font-size: 16px; 
+			cursor: pointer; 
+			border: 2px #1e1e1e solid; 
+		}
+	</style>
+</head>
+<body>
+
+<canvas id="canvas" width="400" height="550"></canvas> <!-- Игровое поле -->
+<div id="gameOverText">Game Over</div> 
+<div id="gameOver">Your score</div> 
+<button id="restartBtn">Try</button> 
+<div class="button">
+	<button id="speedBtn">level1</button> 
+	<button id="speedBtnOne">level2</button> 
+	<button id="speedBtnTwo">level3</button> 
+</div>
+<script src="main.js"></script>
+</body>
+</html>
