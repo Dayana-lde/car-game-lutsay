@@ -102,3 +102,60 @@ const canvas = document.getElementById("canvas");
 		}
 		stop = true; // Устанавливаем флаг для остановки игры
 	}
+// Функция для рисования машинки
+	function drawMyCar() {
+		if (okLeft && myCar.X > 0) myCar.X -= 5; // Двигаем машину влево
+		if (okRight && myCar.X < 335) myCar.X += 5; // Двигаем машину вправо
+		ctx.drawImage(myCar, myCar.X, myCar.Y, 150, 100); // Рисуем машину игрока
+	}
+
+	// Функция для рисования вражеской машинки 
+	function drawEnemyCar1() {
+		let crash = false; // Флаг для проверки столкновения
+		// Проверяем, произошло ли столкновение
+		if (
+			enemyCar1.Y + 60 > myCar.Y &&
+			enemyCar1.X + 40 > myCar.X &&
+			enemyCar1.X < myCar.X + 40
+		) {
+			crash = true;
+			enemyCar1.Y = enemyCar2.Y - 300; // Сбрасываем вражескую машину
+			lives--; // Уменьшаем количество жизней
+			if (lives < 1) stopGame(); // Если жизней нет, останавливаем игру
+		}
+
+		// Если столкновения не было, рисуем машину
+		if (!crash) {
+			ctx.drawImage(enemyCar1, enemyCar1.X, enemyCar1.Y, 70, 100); // Рисуем вражескую машину
+			enemyCar1.Y += enemySpeed; // Двигаем машину вниз
+			if (enemyCar1.Y > 500) {
+				enemyCar1.Y = -100; // Если машина вышла за пределы экрана, перемещаем её обратно наверх
+				enemyCar1.X = Math.floor(Math.random() * 335); // Случайное положение по оси X
+			}
+		}
+	}
+
+	
+	function drawEnemyCar2() {
+		let crash = false;
+		if (
+			enemyCar2.Y + 60 > myCar.Y &&
+			enemyCar2.X + 40 > myCar.X &&
+			enemyCar2.X < myCar.X + 40
+		) {
+			crash = true;
+			enemyCar2.Y = enemyCar1.Y - 300;
+			lives--;
+			if (lives < 1) stopGame();
+		}
+
+		if (!crash) {
+			ctx.drawImage(enemyCar2, enemyCar2.X, enemyCar2.Y, 150, 100);
+			enemyCar2.Y += enemySpeed;
+			if (enemyCar2.Y > 500) {
+				enemyCar2.Y = -100;
+				enemyCar2.X = Math.floor(Math.random() * 335);
+			}
+		}
+	}
+
