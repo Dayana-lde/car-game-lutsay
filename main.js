@@ -43,3 +43,15 @@ const canvas = document.getElementById("canvas");
 	enemyCar2.src = "car.yellow.png"; // Вторая вражеская машинка
 	enemyCar2.X = 250;
 	enemyCar2.Y = -450;
+
+// для рисования дороги
+	function drawRect() {
+		ctx.drawImage(road, 0, 0, canvas.width, canvas.height); // Рисуем дорогу
+	}
+
+	// отображение количества жизней
+	function drawLives() {
+		ctx.font = "20px Arial"; 
+		ctx.fillStyle = "White"; 
+		ctx.fillText("Lives: " + lives, 275, 48); // Отображаем количество жизней
+	}
