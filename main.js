@@ -179,5 +179,16 @@ const canvas = document.getElementById("canvas");
 	}
 
 	render(); // Начинаем рендеринг игры
+// Управление движением машины
+	addEventListener("keydown", function(event) {
+		const newDirect = event.keyCode;
+		if (newDirect === 37) okLeft = true; // Если нажата клавиша влево
+		if (newDirect === 39) okRight = true; // Если нажата клавиша вправо
+	});
 
+	addEventListener("keyup", function(event) {
+		const newDirect = event.keyCode;
+		if (newDirect === 37) okLeft = false; // Если отпущена клавиша влево
+		if (newDirect === 39) okRight = false; // Если отпущена клавиша вправо
+	});
 
