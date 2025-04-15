@@ -55,3 +55,22 @@ const canvas = document.getElementById("canvas");
 		ctx.fillStyle = "White"; 
 		ctx.fillText("Lives: " + lives, 275, 48); // Отображаем количество жизней
 	}
+
+// отображение счета и времени
+	function drawScore() {
+		ctx.font = "20px Arial"; 
+		ctx.fillStyle = "White"; 
+		ctx.fillText("Score: " + score, 275, 80); 
+		ctx.fillText("Time: " + timeAlive, 275, 110); 
+	}
+
+	// рисование линий на дороге
+	function drawLines() {
+		ctx.drawImage(line, line.X, line.Y); 
+		line.Y += 3; // Двигаем линию вниз
+		if (line.Y > 500) line.Y = -140; // Если линия вышла за пределы экрана, перемещаем её обратно наверх
+
+		ctx.drawImage(line2, line2.X, line2.Y);
+		line2.Y += 3; 
+		if (line2.Y > 500) line2.Y = -140; 
+	}
